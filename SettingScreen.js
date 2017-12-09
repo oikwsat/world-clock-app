@@ -20,17 +20,22 @@ export default class SettingScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View>
-          <Text style={styles.text}>24時間形式を使用</Text>
-          <Switch
-            style={styles.switch}
-            onValueChange = {(value) => this.setState({hourDisplayMode: value})}
-            value = {this.state.hourDisplayMode} />
-          <Text style={styles.text}>秒を表示する</Text>
-          <Switch
-            style={styles.switch}
-            onValueChange = {(value) => this.setState({showSeconds: value})}
-            value = {this.state.showSeconds} />
+        <View style={styles.settings}>
+          <View style={styles.row}>
+            <Switch
+              value={this.state.hourDisplayMode}
+              onValueChange={(value) => this.setState({hourDisplayMode: value})}
+            />
+            <Text style={styles.text}>24時間形式を使用</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Switch
+              value={this.state.showSeconds}
+              onValueChange={(value) => this.setState({showSeconds: value})}
+            />
+            <Text style={styles.text}>秒を表示する</Text>
+          </View>
         </View>
         <Text>Shake your phone to open the developer menu.</Text>
       </View>
@@ -40,14 +45,25 @@ export default class SettingScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    padding: 16,
+  },
+  settings: {
+    marginBottom: 8,
+    marginHorizontal: 8,
+    padding: 16,
+    borderRadius: 2,
+    backgroundColor: '#FFF',
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    alignItems: 'center',
+    paddingTop: 4,
+    paddingBottom: 4,
   },
   text: {
-    margin: 20
-  },
-  switch: {
-    margin: 20,
-    marginTop: -41
+    fontSize: 14,
+    color: '#272d2d',
+    fontWeight: '300',
   },
 });
